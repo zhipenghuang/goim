@@ -48,7 +48,7 @@ func context() *imctx.Context {
 	return imctx.NewContext(db.Factoty.GetSession())
 }
 
-// handleSyncTrigger 处理消息同步出发
+// handleSyncTrigger 处理消息同步触发
 func handleSyncTrigger(msg *nsq.Message) error {
 	var trigger transfer.SyncTrigger
 	err := jsoniter.Unmarshal(msg.Body, &trigger)

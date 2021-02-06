@@ -208,7 +208,7 @@ func (c *ConnContext) HandlePackageMessageSend(pack *Package) {
 		SendSequence:   send.SendSequence,
 		SendTime:       lib.UnunixTime(send.SendTime),
 	}
-
+	logger.Sugar.Infow("长连接服务器收到消息包：", "device_id", c.DeviceId, "user_id", c.UserId, "Content:", send.Content)
 	publishMessageSend(transferSend)
 	if err != nil {
 		logger.Sugar.Error(err)

@@ -124,7 +124,7 @@ func (c *TcpClient) HandlePackage(pack connect.Package) error {
 		}
 
 		for _, v := range message.Messages {
-			logger.Sugar.Info(message)
+			logger.Sugar.Info(v)
 		}
 
 		if len(message.Messages) == 0 {

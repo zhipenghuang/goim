@@ -22,9 +22,9 @@ func (*messageDao) Add(ctx *imctx.Context, message model.Message) error {
 	return nil
 }
 
-// ListByUserIdAndSequence 根据用户id查询大于序号大于sequence的消息
+// ListByUserIdAndSequence 根据用户id查询序号大于sequence的消息
 func (*messageDao) ListByUserIdAndSequence(ctx *imctx.Context, userId int64, sequence int64) ([]*model.Message, error) {
-	rows, err := ctx.Session.Query("select id,message_id,user_id,sender_type,sender_id,sender_device_id,receiver_type,receiver_id,type,content,sequence,send_time,create_time from t_message where user_id = ? and sequence >= ?",
+	rows, err := ctx.Session.Query("select id,message_id,user_id,sender_type,sender_id,sender_device_id,receiver_type,receiver_id,type,content,sequence,send_time,create_time from t_message where user_id = ? and sequence > ?",
 		userId, sequence)
 	if err != nil {
 		logger.Sugar.Error(err)
